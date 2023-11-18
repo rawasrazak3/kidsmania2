@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include kids_mania *.css
+recursive-include kids_mania *.csv
+recursive-include kids_mania *.html
+recursive-include kids_mania *.ico
+recursive-include kids_mania *.js
+recursive-include kids_mania *.json
+recursive-include kids_mania *.md
+recursive-include kids_mania *.png
+recursive-include kids_mania *.py
+recursive-include kids_mania *.svg
+recursive-include kids_mania *.txt
+recursive-exclude kids_mania *.pyc
