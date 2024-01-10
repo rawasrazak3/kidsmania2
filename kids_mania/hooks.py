@@ -1,4 +1,5 @@
 from . import __version__ as app_version
+from kids_mania.period_closing_voucher_custom import PeriodClosingVoucher
 
 app_name = "kids_mania"
 app_title = "Kids Mania"
@@ -12,7 +13,7 @@ app_license = "MIT"
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/kids_mania/css/kids_mania.css"
-# app_include_js = "/assets/kids_mania/js/kids_mania.js"
+app_include_js = "/assets/kids_mania/js/custom_kids_mania.js"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/kids_mania/css/kids_mania.css"
@@ -42,7 +43,7 @@ app_license = "MIT"
 
 # website user home page (by Role)
 # role_home_page = {
-#	"Role": "home_page"
+# 	"Role": "home_page"
 # }
 
 # Generators
@@ -56,8 +57,8 @@ app_license = "MIT"
 
 # add methods and filters to jinja environment
 # jinja = {
-#	"methods": "kids_mania.utils.jinja_methods",
-#	"filters": "kids_mania.utils.jinja_filters"
+# 	"methods": "kids_mania.utils.jinja_methods",
+# 	"filters": "kids_mania.utils.jinja_filters"
 # }
 
 # Installation
@@ -99,11 +100,11 @@ app_license = "MIT"
 # Permissions evaluated in scripted ways
 
 # permission_query_conditions = {
-#	"Event": "frappe.desk.doctype.event.event.get_permission_query_conditions",
+# 	"Event": "frappe.desk.doctype.event.event.get_permission_query_conditions",
 # }
 #
 # has_permission = {
-#	"Event": "frappe.desk.doctype.event.event.has_permission",
+# 	"Event": "frappe.desk.doctype.event.event.has_permission",
 # }
 
 # DocType Class
@@ -111,40 +112,40 @@ app_license = "MIT"
 # Override standard doctype classes
 
 # override_doctype_class = {
-#	"ToDo": "custom_app.overrides.CustomToDo"
+# 	"ToDo": "custom_app.overrides.CustomToDo"
 # }
 
 # Document Events
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-#	"*": {
-#		"on_update": "method",
-#		"on_cancel": "method",
-#		"on_trash": "method"
-#	}
-# }
+doc_events = {
+		"Stock Entry": {"validate": "kids_mania.main.stock_entry_validate"},
+		"Sales Invoice": {"validate": "kids_mania.main.common_validate"},
+		"Delivery Note": {"validate": "kids_mania.main.common_validate"},
+		"Purchase Invoice": {"validate": "kids_mania.main.common_validate"},
+		"Purchase Receipt": {"validate": "kids_mania.main.common_validate"},
+	}
 
 # Scheduled Tasks
 # ---------------
 
 # scheduler_events = {
-#	"all": [
-#		"kids_mania.tasks.all"
-#	],
-#	"daily": [
-#		"kids_mania.tasks.daily"
-#	],
-#	"hourly": [
-#		"kids_mania.tasks.hourly"
-#	],
-#	"weekly": [
-#		"kids_mania.tasks.weekly"
-#	],
-#	"monthly": [
-#		"kids_mania.tasks.monthly"
-#	],
+# 	"all": [
+# 		"kids_mania.tasks.all"
+# 	],
+# 	"daily": [
+# 		"kids_mania.tasks.daily"
+# 	],
+# 	"hourly": [
+# 		"kids_mania.tasks.hourly"
+# 	],
+# 	"weekly": [
+# 		"kids_mania.tasks.weekly"
+# 	],
+# 	"monthly": [
+# 		"kids_mania.tasks.monthly"
+# 	],
 # }
 
 # Testing
@@ -156,14 +157,14 @@ app_license = "MIT"
 # ------------------------------
 #
 # override_whitelisted_methods = {
-#	"frappe.desk.doctype.event.event.get_events": "kids_mania.event.get_events"
+# 	"frappe.desk.doctype.event.event.get_events": "kids_mania.event.get_events"
 # }
 #
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
 # along with any modifications made in other Frappe apps
 # override_doctype_dashboards = {
-#	"Task": "kids_mania.task.get_dashboard_data"
+# 	"Task": "kids_mania.task.get_dashboard_data"
 # }
 
 # exempt linked doctypes from being automatically cancelled
@@ -189,29 +190,29 @@ app_license = "MIT"
 # --------------------
 
 # user_data_fields = [
-#	{
-#		"doctype": "{doctype_1}",
-#		"filter_by": "{filter_by}",
-#		"redact_fields": ["{field_1}", "{field_2}"],
-#		"partial": 1,
-#	},
-#	{
-#		"doctype": "{doctype_2}",
-#		"filter_by": "{filter_by}",
-#		"partial": 1,
-#	},
-#	{
-#		"doctype": "{doctype_3}",
-#		"strict": False,
-#	},
-#	{
-#		"doctype": "{doctype_4}"
-#	}
+# 	{
+# 		"doctype": "{doctype_1}",
+# 		"filter_by": "{filter_by}",
+# 		"redact_fields": ["{field_1}", "{field_2}"],
+# 		"partial": 1,
+# 	},
+# 	{
+# 		"doctype": "{doctype_2}",
+# 		"filter_by": "{filter_by}",
+# 		"partial": 1,
+# 	},
+# 	{
+# 		"doctype": "{doctype_3}",
+# 		"strict": False,
+# 	},
+# 	{
+# 		"doctype": "{doctype_4}"
+# 	}
 # ]
 
 # Authentication and authorization
 # --------------------------------
 
 # auth_hooks = [
-#	"kids_mania.auth.validate"
+# 	"kids_mania.auth.validate"
 # ]
